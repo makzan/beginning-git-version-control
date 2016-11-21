@@ -44,6 +44,14 @@ This is the information that we can trace who has been working on what later whe
 
 NOTE: You can set project specific name and email by running the `git config` command without the `--global` option.
 
+## Setting up filename for unicode
+
+You can set Git to use unicode in filename by configuring the following:
+
+```
+git config --global core.quotepath false
+```
+
 ## Init and First Commit
 In the following steps, we will learn the very basic commands to control a project folder with git. Then we will make changes to the project files and save the snapshots into the git repository.
 
