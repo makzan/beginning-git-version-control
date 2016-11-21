@@ -1,6 +1,6 @@
 # Chapter 1: Basic Command
 
-By Makzan, version 1.0, First Draft. 2015-11-21.
+By Makzan, version 1.0.2, First Draft. 2016-11-21.
 
 In this chapter, we will explore the fundamental things to get started using git version control. 
 

@@ -18,7 +18,7 @@ I follow the lean publishing philosophy. We make the book published as soon as i
 
 You will also find the version status in each chapter. 
 
-/Version History.txt
+/Version History.md
 
 
 # Book reference
