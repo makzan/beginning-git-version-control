@@ -5,6 +5,7 @@ By Makzan, version 1.0, First Draft. 2015-11-21.
 In this chapter, we will explore the fundamental things to get started using git version control. 
 
 We will learn to:
+
 - Install and init a git repository.
 - Commit the changes as snapshot into the repository.
 - Write helpful commit messages.
