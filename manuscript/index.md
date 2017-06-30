@@ -8,6 +8,12 @@ In this book, we will go through the basic concept of Git version control.
 
 I design this book as a journey of the main character name John. He is an IT manager that manage a team of developers. He is also in charge of deploying the code to the production server. 
 
+# Why this git book?
+
+Git is getting more and more powerful. It means more and more commands for us to control every little detail of code changes. That’s good. But as a new learner, I trim the content to provide only the essential concepts and the best practices.
+
+For example, I recommend `git fetch` + `git merge` always instead of `git pull`. You’ll learn all these commands in elsewhere, but in this book, I tell the _why_ and their pros and cons. (In chapter 5)
+
 ## About Author
 
 I am Thomas Seng Hin Mak, but you may find me on Internet as “Makzan”.
@@ -34,18 +40,19 @@ You will also find the version status in each chapter.
 - 2016-11-07: Organize content into HTML format.
 - 2016-11-20: Minor fixes and PDF output.
 - 2016-11-21: Add config of quote path.
+- 2017-06-30: Moved the manuscript to Ulysses and setup Leanpub. Added “Why this book” section.
 
 # Book reference
-This short book provides only the essential techniques to help you get started using git version control. It’s a tips and tricks sharing from my 6 years experience. 
+This short book provides only the essential techniques to help you get started using git version control. It’s a tips and tricks sharing from my 8 years of experience. 
 
-If you need to reference certain concepts of commands, I recommend reading the  [Pro Git](#)(https://progit.org/)  book, or its web format on  [git-scm.com](#)(http://git-scm.com/) .
+If you need to reference certain concepts of commands, I recommend reading the [Pro Git](https://progit.org/) book, or its web format on [git-scm.com](http://git-scm.com/).
 
-This is the go-to book to learn git. You can also find the reference of git commands on  [git-scm.com/docs](#)(http://git-scm.com/docs).
+That is the go-to book to learn git. You can also find the reference of git commands on  [git-scm.com/docs](http://git-scm.com/docs).
 
 Besides the Pro Git book and the official reference, there are some other online resources:
 
-- [Git Ready](#)(http://gitready.com/) 
-- [Git Pretty](#)(http://justinhileman.info/article/git-pretty/) 
+- [Git Ready](http://gitready.com/)
+- [Git Pretty](http://justinhileman.info/article/git-pretty/) 
 
 
 # Beginning of the story
@@ -144,9 +151,7 @@ The `git init` initials the current folder as a git controlled repository.
 5. Run the following `git commit` command to commit the marked files into the repository. This is the step that really save the changes as a snapshot.
 
 
-	````
 		git commit -m “First commit.”
-	````
 
 
 NOTE: As a beginner, it’s easy to forget the commit message. `git commit` requires the message exists, but sometimes beginners simply avoid it by using `-m “”`.
@@ -176,24 +181,23 @@ We can observe the current status by using the `git status` command. 
 For example, when we run the `git status` command in a directory with changes, we will see he following result. 
 
 
-````
-On branch master
-Your branch is up-to-date with ‘origin/master’.
 
-Changes not staged for commit:
-  (use “git add \<file\>...” to update what will be committed)
-  (use “git checkout -- \<file\>...” to discard changes in working directory)
-
-modified:   app/assets/javascripts/application.js
-modified:   app/views/documents/_form.html.erb
-modified:   app/views/documents/show.html.erb
-
-Untracked files:
-  (use “git add \<file\>...” to include in what will be committed)
-
-app/assets/javascripts/components/last-save.js.jsx
-vendor/assets/javascripts/moment.js
-````
+	On branch master
+	Your branch is up-to-date with ‘origin/master’.
+	
+	Changes not staged for commit:
+	  (use “git add <file>...” to update what will be committed)
+	  (use “git checkout -- <file>...” to discard changes in working directory)
+	
+			modified:   app/assets/javascripts/application.js
+			modified:   app/views/documents/_form.html.erb
+			modified:   app/views/documents/show.html.erb
+	
+	Untracked files:
+	  (use “git add <file>...” to include in what will be committed)
+	
+			app/assets/javascripts/components/last-save.js.jsx
+			vendor/assets/javascripts/moment.js
 
 
 For the status, you may observe that there are two stages of files: (Actually there are three, we will go through it later)
@@ -224,19 +228,13 @@ There are several log options. The default one isn’t such useful actually. 
 
 I usually view my log with the following options. 
 
-
-````
-$ git log --oneline  --graph --decorate --color --all
-````
+	$ git log --oneline  --graph --decorate --color --all
 
 
 It’s a very long command, right? So I usually set it as an alias command. This can be done by setting the alias in the `.gitconfig` file. 
 
-
-````
-[alias](#)
-  lg = log --all --oneline --graph --decorate --color
-````
+	[alias]
+	  lg = log --all --oneline --graph --decorate --color
 
 
 NOTE: The `.gitconfig` file is usually in the home directory.
@@ -381,7 +379,7 @@ The file is under tracked and there are changes since last commit.
 
 The changes is marked and will be added to repository in next commit. 
 
- [Reference of staging area](#)(http://git-scm.com/about/staging-area) 
+	 [Reference of staging area](http://git-scm.com/about/staging-area) 
 
 ### Committed:
 
@@ -616,9 +614,8 @@ We can create branch by using `git checkout -b`.
 For example, the following command creates a new feature branch.
 
 
-````
-git checkout new_feature
-````
+	git checkout new_feature
+
 
 
 This creates a new branch. But actually nothing really changes here until we create new commits. When you git log the commits, you still see the same commits graph. The only difference is now there is a new_feature brands name appears at where the HEAD at. 
@@ -634,9 +631,9 @@ Now we make some other changes on master and commit it. When we git log to see t
 After we created different branches, we need `git merge` to merge the current branch into the other branch.
 
 
-````
-(master branch)$ git merge feature_a
-````
+
+	(master branch)$ git merge feature_a
+
 
 
 It’s result is a recursive merge. That happens when we merge 2 branches that has a different commits history.
@@ -647,10 +644,10 @@ It’s result is a recursive merge. That happens when we merge 2 branches that h
 Afterwards, we may checkout the `feature_a` branch and merge to `master`.
 
 
-````
-$ git checkout feature_a
-$ git merge master
-````
+
+	$ git checkout feature_a
+	$ git merge master
+
 
 
 It’s result is a fast-forward merge. That happens when we merge branches that is in the same timeline.
@@ -660,27 +657,19 @@ It’s result is a fast-forward merge. That happens when we merge branches that 
 
 Diff between un-staged changes and staged / commuted changes: 
 
-````
-git diff
-````
+	git diff
 
 
 This compares the current non-added changes with the last commit in the current branch.
 
 
-````
-git diff --cached
-````
+	git diff --cached
+
 
 
 `--cached` compare the staged changes (added but not committed) with the  last commit in the current branch.
 
-
-````
-git diff branchA branchB
-````
-
-
+	git diff branchA branchB
 
 Why need to diff before committing?
 
@@ -690,19 +679,18 @@ Assume the following `git status` result. We see that there are two files change
 
 An example of git status with two changes files:
 
-````
-$ git status
-On branch master
 
-Changes not staged for commit:
-  (use "git add \<file\>..." to update what will be committed)
-  (use "git checkout -- \<file\>..." to discard changes in working directory)
-
-modified:   app/assets/javascripts/components/last-save.js.jsx
-modified:   app/assets/stylesheets/app.css.scss
-
-no changes added to commit (use "git add" and/or "git commit -a")
-````
+	$ git status
+	On branch master
+	
+	Changes not staged for commit:
+	  (use "git add <file>..." to update what will be committed)
+	  (use "git checkout -- <file>..." to discard changes in working directory)
+	
+			modified:   app/assets/javascripts/components/last-save.js.jsx
+			modified:   app/assets/stylesheets/app.css.scss
+	
+	no changes added to commit (use "git add" and/or "git commit -a")
 
 
 Then, we use the `git diff` to check the code changes before committing them into the repository.
@@ -734,12 +722,11 @@ Every day, here is the workflow.
 
 We can set alias in the `.gitconfig` file.
 
-````
-[alias](#)
-st = status
-lg = log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)\<%an\>%Creset' --abbrev-commit
-ll = log --all --oneline --graph --decorate --color
-````
+	
+	[alias]
+		st = status
+		lg = log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+		ll = log --all --oneline --graph --decorate --color
 
 NOTE: Most likely the `.gitconfig` file is in current user’s home directory.
 
@@ -781,9 +768,9 @@ There is a flow on switching branches. It’s an organization of branches that e
 
 There is a branch dedicated to stable commits. Then there is a branch that contains latest working code, which is often “master”. There is a “development” branch which contains commits that may break.
 
-Then for each new feature, we create a branch from the “development” branch. We may call it “fea_name” or “dev_name”. 
+Then for each new feature, we create a branch from the “development” branch. We may call it `fea_name` or `dev_name`. 
 
-For example, “dev_auth” or “dev_saving_record”.
+For example, `dev_auth` or `dev_saving_record`.
 
 Eventually, these feature branches are merged into the development branch. When the code passes the quality test, it will be pushed to staging branch for further testing. Finally, the code will be pushed to the deployment branch which will be built into production environment.
 
@@ -859,6 +846,7 @@ In other branches, such as development and features branches, I still use normal
 
 # Chapter 5: Remote and Collaboration
 
+The beauty of git version control is that enables flexible collaboration between team members or even external developers.
 
 ## Different roles in Git team
 
@@ -872,7 +860,8 @@ On the other side, John setups a git repository that connects to production envi
 
 John, the project manager, check for updates of stable branch from the development’s git repository. Then John pull the code and push to the production git repository.
 
-/25A4F8AE-2712-4EBC-8CFC-503AC0E15918.png
+![](25A4F8AE-2712-4EBC-8CFC-503AC0E15918.png)
+
 
 ## Creating a remote repository 
 
@@ -882,17 +871,13 @@ In this example, we create a remote folder in the same system.
 
 1. Choose a place that’s not part of the current project folder. For example, I chose to make the remote folder in the Dropbox folder.
 
-	````
-	cd /Dropbox
-	mkdir sample-project-remote.git
-	cd sample-projectt-remote.git
-	````
+		cd ~/Dropbox
+		mkdir sample-project-remote.git
+		cd sample-projectt-remote.git
 
 1. Make sure it is an empty folder. Then we run the following `git init` command with the `--bare` option.
-
-	````
-	git init --bare
-	````
+2. 
+		git init --bare
 
 ### What’s happening?
 
@@ -908,13 +893,10 @@ Commands related to the remote managements are under `git remote` command.
 
 To add a remote:
 
-````
-git remote add \<name\> \<path to the repository\>
-````
+	git remote add <name> <path to the repository>
 
-````
-git remote add origin /Dropbox/remote-sample.git
-````
+	git remote add origin ~/Dropbox/remote-sample.git
+
 
 NOTE: This is an example. Using Dropbox may not be an ideal choice for storing and syncing remote repository.
 
@@ -924,9 +906,8 @@ Suppose now John’s team has a new member. The new member want a copy of the cu
 
 We talked about adding remote to an existing git repository. The other way to setup a remote is to create a local repository directly from a remote one. This is known as git cloning. 
 
-````
-git clone \<remote path\> \<folder name of local repository\>
-````
+	git clone <remote path> <folder name of local repository>
+
 
 By default, git clone will clone the remote repository into a new directory with the same name, under the current folder. 
 
@@ -936,35 +917,33 @@ The git clone command expects to create that folder. So the operation aborts whe
 
 When we have a remote, we can `git push` a branch to the remote repository. 
 
-````
-git push \<Remote name\> \<Branch name\>
-````
+
+	git push <Remote name> <Branch name>
+
 
 For example, usually we push to the default remote (origin) and default branch (master).
 
-````
-git push original master
-````
+
+	git push original master
+
 
 ## Deleting a remote branch 
 
-````
-git push origin :feature_a
-````
+	git push origin :feature_a
+
 
 NOTE: remember to type the colon mark. 
 
 According to the spec, we don’t necessary to name the local branch and remote branch the same name. 
 
-````
-git push \<remote name\> \<local branch name\>:\<remote branch name\>
-````
+
+	git push <remote name> <local branch name>:<remote branch name>
+
 
 For example:
 
-````
-git push origin new_styles:dev_styles
-````
+
+	git push origin new_styles:dev_styles
 
 Your local branch may not meet the team standard convention, you can rename it when pushing to the remote branch. 
 
@@ -982,15 +961,15 @@ The reason is that `git pull` automatically merges the remotely changed code int
 
 So I prefer to fetch the remote code first. In the console, you’ll notice that what files have changed in the external side. You can exam the changes before combining the code into your working environment. If you find issues on the remote changes, you can reject it and request the teammate to improve the code and let you fetch and merge it later after the improvement made.
 
-## git and github
+## git and Github
 
-git and GitHub is a different thing.
+git and Github is a different thing.
 
 A git repository is just a storage of code snapshots. 
 
 Github provides additional tools around the git repository. 
 
-For example, github provides:
+For example, Github provides:
 
 - web interface to view source code. 
 - web interface to change file. 
@@ -1000,25 +979,27 @@ For example, github provides:
 - Wiki to provide additional documentation. 
 
 
-## Using a github remote branch
+## Using a Github remote branch
 
-Try to create an account in github. 
+Try to create an account in Github. 
 
-Add the github repository as a remote origin into the local branch. 
+Add the Github repository as a remote origin into the local branch. 
 
 Then try to push the changes there. 
 
 Also try to make some changes directly on the remote branch. And then pull the changes into the local working repository.
 
-NOTE: github is free for open sourced projects and charges for private repositories. Since this is just a practice, creating open sourced projects is enough for the purpose. 
+NOTE: Github is free for open sourced projects and charges for private repositories. Since this is just a practice, creating open sourced projects is enough for the purpose. 
 
-NOTE: github isn’t the only online repository tool. Some others such as Bitbucket and Gitlab provides similar functionalities.
+NOTE: Github isn’t the only online repository tool. Some others such as Bitbucket and Gitlab provides similar functionalities.
 
 
 
 
 
 # Chapter 6: Conflicts
+
+New git learner often worry about conflicts. If we plan our branches carefully, the conflicts are usually not difficult to fix.
 
 ## How does conflict exist
 
@@ -1043,7 +1024,7 @@ Here is the git log output:
 	|/  
 	* 52aec20 - (master) 
 
-When we try to merge index_b with index_a, it shows a conflict. When you `git log`, you won’t see the merge commit appears. This doesn’t mean the merge is aborted. It just mean the merge is paused and waiting us for further operations.
+When we try to merge `index_b` with `index_a`, it shows a conflict. When you `git log`, you won’t see the merge commit appears. This doesn’t mean the merge is aborted. It just mean the merge is paused and waiting us for further operations.
 
 
 	(index_a) $ git merge index_b
@@ -1066,7 +1047,7 @@ Or in short form of status, there is a `UU`.
 	UU index.html
 
 
-When you open the index.html in editor, you shoud see something like `<<<<`, `====` and `>>>>`.
+When you open the index.html in editor, you should see something like `<<<<`, `====` and `>>>>`.
 
 Conflict example:
 
@@ -1139,67 +1120,64 @@ For example, if we want to
 - Revert changes after pushing to a remote branch
 - Rebase commits into another commit.
 
-## Undo a hard reset with reflog
+## Undo a hard reset with reference log
 
-We can undo a hard reset with git reflog.
+We can undo a hard reset with `git reflog`.
 
-After we do a hard reset, we can’t see the changes of that commit in git log or working directory anymore. But still we can use reflog to rescue recently deleted commits.
+After we do a hard reset, we can’t see the changes of that commit in git log or working directory anymore. But still we can use `reflog` to rescue recently deleted commits.
 
 
-````
-$ git reflog
-7e603f6 HEAD@0: reset: moving to HEAD^
-29738b4 HEAD@1: commit: Test something.
-7e603f6 HEAD@2: reset: moving to HEAD^
-85f5fe2 HEAD@3: commit: Test something.
-7e603f6 HEAD@4: reset: moving to HEAD^
-ac7adcb HEAD@5: commit: Test something.
-7e603f6 HEAD@6: reset: moving to HEAD^
-4a4ab6e HEAD@7: commit: Ignore dot_git.
-7e603f6 HEAD@8: reset: moving to HEAD^
-d2bb180 HEAD@9: commit: Add dot_git folder to let student resume my working directory status.
-7e603f6 HEAD@10: reset: moving to HEAD^
-c366c68 HEAD@11: commit: Add dot_git to ignore list.
-7e603f6 HEAD@12: commit (merge): Merge github/master
-988b280 HEAD@13: commit: Add a call to action text.
-39b246b HEAD@14: checkout: moving from bbb771688b6ff5a0f114b0e36820e117a8f78736 to master
-bbb7716 HEAD@15: checkout: moving from master to github/master
-39b246b HEAD@16: commit: Add logo and links in HTML.
-8527471 HEAD@17: merge index_b: Fast-forward
-8e6852d HEAD@18: checkout: moving from index_b to master
-8527471 HEAD@19: commit (merge): Merge 'index_a'
-5b1bad2 HEAD@20: commit: Change text in HTML.
-8e6852d HEAD@21: checkout: moving from master to index_b
-8e6852d HEAD@22: checkout: moving from index_a to master
-f9fca5f HEAD@23: commit: Add year to footer copyright.
-8e6852d HEAD@24: checkout: moving from master to index_a
-8e6852d HEAD@25: commit: Add tags to HTML file.
-5d8c653 HEAD@26: reset: moving to 5d8c653
-0da344e HEAD@27: commit (amend): Add footer tag.
-ee60e93 HEAD@28: commit: Add fotter tag.
-66c7c85 HEAD@29: commit: Add \<p\> tag to paragraphs.
-46953e0 HEAD@30: commit: Add header tag.
-5d8c653 HEAD@31: reset: moving to HEAD1
-7d0439b HEAD@32: commit: Quick commit
-````
+	$ git reflog
+	7e603f6 HEAD@{0}: reset: moving to HEAD^
+	29738b4 HEAD@{1}: commit: Test something.
+	7e603f6 HEAD@{2}: reset: moving to HEAD^
+	85f5fe2 HEAD@{3}: commit: Test something.
+	7e603f6 HEAD@{4}: reset: moving to HEAD^
+	ac7adcb HEAD@{5}: commit: Test something.
+	7e603f6 HEAD@{6}: reset: moving to HEAD^
+	4a4ab6e HEAD@{7}: commit: Ignore dot_git.
+	7e603f6 HEAD@{8}: reset: moving to HEAD^
+	d2bb180 HEAD@{9}: commit: Add dot_git folder to let student resume my working directory status.
+	7e603f6 HEAD@{10}: reset: moving to HEAD^
+	c366c68 HEAD@{11}: commit: Add dot_git to ignore list.
+	7e603f6 HEAD@{12}: commit (merge): Merge github/master
+	988b280 HEAD@{13}: commit: Add a call to action text.
+	39b246b HEAD@{14}: checkout: moving from bbb771688b6ff5a0f114b0e36820e117a8f78736 to master
+	bbb7716 HEAD@{15}: checkout: moving from master to github/master
+	39b246b HEAD@{16}: commit: Add logo and links in HTML.
+	8527471 HEAD@{17}: merge index_b: Fast-forward
+	8e6852d HEAD@{18}: checkout: moving from index_b to master
+	8527471 HEAD@{19}: commit (merge): Merge 'index_a'
+	5b1bad2 HEAD@{20}: commit: Change text in HTML.
+	8e6852d HEAD@{21}: checkout: moving from master to index_b
+	8e6852d HEAD@{22}: checkout: moving from index_a to master
+	f9fca5f HEAD@{23}: commit: Add year to footer copyright.
+	8e6852d HEAD@{24}: checkout: moving from master to index_a
+	8e6852d HEAD@{25}: commit: Add tags to HTML file.
+	5d8c653 HEAD@{26}: reset: moving to 5d8c653
+	0da344e HEAD@{27}: commit (amend): Add footer tag.
+	ee60e93 HEAD@{28}: commit: Add fotter tag.
+	66c7c85 HEAD@{29}: commit: Add <p> tag to paragraphs.
+	46953e0 HEAD@{30}: commit: Add header tag.
+	5d8c653 HEAD@{31}: reset: moving to HEAD~1
+	7d0439b HEAD@{32}: commit: Quick commit
+
 
 From the reflog, we can see the hash ID of deleted commits.
 
 Then we can create a new branch by picking that hash.
 
 
-````
-$ git checkout -b rescue_branch HASH_ID
-````
+	$ git checkout -b rescue_branch HASH_ID
+
 
 At this moment, we create a branch that points to the deleted commit. Next, we can simply merge the working branch, e.g. master, to the rescue_branch and done.
 
 At last, we can clean up the repo by deleting the temporary rescue_branch.
 
 
-````
-$ git branch -d rescue_branch
-````
+	$ git branch -d rescue_branch
+
 
 ## Stash working directory
 
@@ -1207,26 +1185,21 @@ Sometimes you may start changing your code before switching to a new branch. For
 
 You can use git stash to temporary save your current changes.
 
+	$ git stash
 
-````
-$ git stash
-````
 
 This command saves your current status of non-committed changes, so that the working directory becomes clean again.
 
 Now we can create new branch:
 
+	$ git checkout -b new_feature_branch
 
-````
-$ git checkout -b new_feature_branch
-````
 
 In the new branch, we can pop the saved state by using `git stash pop`.
 
 
-````
-$ git stash pop
-````
+	$ git stash pop
+
 
 Stash allows you to save work-in-progress changes to make the working directory clean. This allows you to save the changes and switch branch to checkout something.
 
@@ -1241,24 +1214,21 @@ Git reset un-commit tracked changes. After a reset, you see commits are removed 
 
 There are three options to perform a reset.
 
-````
-git reset --soft
-git reset (No option)
-git reset --hard
-````
+	git reset --soft
+	git reset (No option)
+	git reset --hard
+
 
 NOTE: A `git reset --hard` delete the commit without putting back the changes into working directory. It means those changes are lost.
 
 We need to understand the three stages for file changes. 
 
-
-/42AC8EFB-F46F-4842-9DB1-E1B6DD71050B.png
+![](42AC8EFB-F46F-4842-9DB1-E1B6DD71050B.png)
 
 Example of reset the last commit
 
-````
-git reset HEAD1
-````
+	git reset HEAD~1
+
 
 The `HEAD~1` means 1 commit before HEAD.
 
@@ -1267,8 +1237,7 @@ Referencing commits by relative path
 
 When we call `git reset`, we need to specific how many commits to reset. We often use a relative reference. `HEAD~1` means 1 commit before HEAD. `HEAD~2` means 2 commits before HEAD. 
 
-
-/1CD4EBE5-2C2E-49B2-B086-4334E96FD485.png
+![](1CD4EBE5-2C2E-49B2-B086-4334E96FD485.png)
 
 NOTE: `HEAD^` also means 1 commit before HEAD.
 
@@ -1278,13 +1247,14 @@ NOTE: `HEAD^` also means 1 commit before HEAD.
 
 We often want to modify last commit.
 
-````
-git commit --amend
-````
+
+	git commit --amend
+
 
 NOTE: This operation should be done before you push the code to any remote branch. Performing undo in remote branch could lead to inconsistent code amount team members.
 
-/08F96AAD-5E4F-48BF-A173-995A04E5CC4E.png
+![](08F96AAD-5E4F-48BF-A173-995A04E5CC4E.png)
+
 
 ## Revert changes from remote
 
@@ -1294,9 +1264,8 @@ Usually we want to clean up the commits before pushing the changes to remote.
 But if we do need to change something on remote, we can use force push.
 
 
-````
-git push -f origin mater 
-````
+	git push -f origin mater 
+
 
 
 NOTE: Really be careful when you force push a remote branch. Think twice if you really need to do that. 
@@ -1321,7 +1290,7 @@ NOTE: Please don’t reset commits that have already pushed on remote repository
 
 ## Git Revert
 
-`TODO`
+TODO
 
 
 
@@ -1359,7 +1328,7 @@ We want to checkout one of the branch. In this example, we checkout dev_styles.
 
 
 
-Then we call `git rebase -i dev_logic`. After going through the interactive mode, we end up have dev_styles applying after `dev`_logic`.`
+Then we call `git rebase -i dev_logic`. After going through the interactive mode, we end up have `dev_styles applying after dev_logic`.
 
 I like to use interaction mode because I can go through the rebase step-by-step. In between, I can also squash multiple commits into 1 commit.
 
@@ -1423,24 +1392,25 @@ This command create a new commit on v2, with the content and comment exactly the
 
 # Chapter 9: Submodule and Dependency
 
-By Makzan, version 1.0, First Draft. 2015-11-21.
+TODO: Need refinement on this chapter.
+
+We can nest git repository into another git repository.
 
 ## Git submodule
 
-````
-$ git submodule add \<remote URL\> \<local path\>
-````
+
+	$ git submodule add <remote URL> <local path>
+
 
 When changing sub-modules in local:
 
-``` bash`
-Changes not staged for commit:
-  (use "git add \<file\>..." to update what will be committed)
-  (use "git checkout -- \<file\>..." to discard changes in working directory)
-  (commit or discard the untracked or modified content in submodules)
 
-modified:   vendors/super-js (modified content)
-````
+	Changes not staged for commit:
+	  (use "git add <file>..." to update what will be committed)
+	  (use "git checkout -- <file>..." to discard changes in working directory)
+	  (commit or discard the untracked or modified content in submodules)
+	
+			modified:   vendors/super-js (modified content)
 
 
 
@@ -1449,38 +1419,37 @@ Otherwise, if the submodule changes externally.
 We can go into the submodule folder and call `git pull`. Or if you want to update all, you can call the `git submodule foreach --recursive git pull`.
 
 
-``` bash`
-$ git submodule foreach --recursive git pull
-Entering 'vendors/cool-css'
-remote: Counting objects: 5, done.
-remote: Total 3 (delta 0), reused 0 (delta 0)
-Unpacking objects: 100% (3/3), done.
-From /home/ubuntu/workspace/cool-css
-   2b5252a..1c3d7a7  master     -\> origin/master
-Updating 2b5252a..1c3d7a7
-Fast-forward
- cool.css | 3 
- 1 file changed, 2 insertions(+), 1 deletion(-)
-Entering 'vendors/super-js'
-Already up-to-date.
-````
+	$ git submodule foreach --recursive git pull
+	Entering 'vendors/cool-css'
+	remote: Counting objects: 5, done.
+	remote: Total 3 (delta 0), reused 0 (delta 0)
+	Unpacking objects: 100% (3/3), done.
+	From /home/ubuntu/workspace/cool-css
+	   2b5252a..1c3d7a7  master     -> origin/master
+	Updating 2b5252a..1c3d7a7
+	Fast-forward
+	 cool.css | 3 ++-
+	 1 file changed, 2 insertions(+), 1 deletion(-)
+	Entering 'vendors/super-js'
+	Already up-to-date.
+
 
 After the pull, the changes hasn’t been marked into commit yet. When you git status, you see the vendors/cool.css is changed but not staged:
 
-``` bash`
-$ git status
-On branch master
-Your branch is ahead of 'origin/master' by 3 commits.
-  (use "git push" to publish your local commits)
 
-Changes not staged for commit:
-  (use "git add \<file\>..." to update what will be committed)
-  (use "git checkout -- \<file\>..." to discard changes in working directory)
+	$ git status
+	On branch master
+	Your branch is ahead of 'origin/master' by 3 commits.
+	  (use "git push" to publish your local commits)
+	
+	Changes not staged for commit:
+	  (use "git add <file>..." to update what will be committed)
+	  (use "git checkout -- <file>..." to discard changes in working directory)
+	
+			modified:   vendors/cool-css (new commits)
+	
+	no changes added to commit (use "git add" and/or "git commit -a")
 
-modified:   vendors/cool-css (new commits)
-
-no changes added to commit (use "git add" and/or "git commit -a")
-````
 
 This is because submodule is a dependency and you need to explicitly tell the git to really change the reference to the new HEAD of external source.
 
@@ -1491,11 +1460,13 @@ If you don’t want the new change and you want to revert the dependency to the 
 It update the submodule to~~ 
 # Chapter 10: Code Deployment
 
-By Makzan, version 1.0, First Draft. 2015-11-21.
+TODO: Need refinement on this chapter.
 
 We can setup hook on web service that performs automatic code deployment when we push the git repository changes to the remote branch. 
 
 ## Push to Cloud66
+
+The following demonstrates deploying a web project to Cloud66 with git.
 
 ### Initial setup
 
@@ -1520,8 +1491,8 @@ NOTE: charge may apply on using Cloud66 service and cost of using cloud provider
 
 Codeship allows us to setup our own deployment commands when new code is pushed to a remote repository. 
 
-For example, I setup makzan.net deployment script on codeship.
+For example, I setup makzan.net deployment script on Codeship.
 
 That website is built by using middleman – a static site builder that generates static web pages according to my files. These web page files are then hosted in static hosting service, surge.sh.
 
-I setup the codeship to install the middleman gem and build the website into static web pages output. Then it install surge command and push the build folder into the service. The access key are set as a codeship environment variables.
+I setup the Codeship to install the middleman gem and build the website into static web pages output. Then it install surge command and push the build folder into the service. The access key are set as a Codeship environment variables.
