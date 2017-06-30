@@ -8,7 +8,7 @@ In this book, we will go through the basic concept of Git version control.
 
 I design this book as a journey of the main character name John. He is an IT manager that manage a team of developers. He is also in charge of deploying the code to the production server. 
 
-# Why this git book?
+## Why this git book?
 
 Git is getting more and more powerful. It means more and more commands for us to control every little detail of code changes. That’s good. But as a new learner, I trim the content to provide only the essential concepts and the best practices.
 
